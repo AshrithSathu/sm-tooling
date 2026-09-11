@@ -80,7 +80,7 @@ export async function proxy(request: NextRequest) {
   }
 
   if (
-    nextUrl.pathname.startsWith('/auth/register') &&
+    (nextUrl.pathname === '/auth' || nextUrl.pathname.startsWith('/auth/register')) &&
     process.env.DISABLE_REGISTRATION === 'true'
   ) {
     return NextResponse.redirect(new URL('/auth/login', nextUrl.href));

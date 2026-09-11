@@ -1,0 +1,1 @@
+SM tooling is a modified deployment of Postiz v2.23.0, branded on 2026-09-11. Original copyright and AGPL-3.0 license are preserved. Changes replace UI branding, logos and titles, remove promotional testimonials, and provide this source archive. Build using Dockerfile, then retain the documented Postiz runtime variables and services.

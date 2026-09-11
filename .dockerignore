@@ -14,10 +14,12 @@ dist
 /apps/commands/dist
 .devcontainer
 **/.git
-**/*.md
-**/LICENSE
 **/npm-debug.log
 **/*.vscode
 .git
 .github
 reports
+.env
+.env.*
+!.env.example
+apps/frontend/public/source.tar.gz
