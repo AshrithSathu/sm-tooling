@@ -38,4 +38,4 @@ This is screen and login/media workflow verification, not a claim that every pos
 
 ## GitHub deployment verification
 
-Fork: https://github.com/AshrithSathu/sm-tooling. Railway production builds branch `feat/sm-tooling-branding`; its GitHub push trigger is configured. Commit `76e6e5e` deployed successfully as `688379cf-98a4-4bbb-8a4e-f63ef6fd1dd2`. Frontend, backend and orchestrator builds passed. The live browser shows SM tooling on sign-in, sidebar and Settings; fresh login and logout pass. API login/cookie and media checks pass. The downloadable modified source includes LICENSE and no private environment files.
+Fork: https://github.com/AshrithSathu/sm-tooling. Railway production builds branch `main`; its GitHub push trigger is configured. Commit `76e6e5e` deployed successfully as `688379cf-98a4-4bbb-8a4e-f63ef6fd1dd2`. Frontend, backend and orchestrator builds passed. The live browser shows SM tooling on sign-in, sidebar and Settings; fresh login and logout pass. API login/cookie and media checks pass. The downloadable modified source includes LICENSE and no private environment files.

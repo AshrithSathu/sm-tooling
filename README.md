@@ -4,7 +4,7 @@ Self-hosted social media scheduling, based on [Postiz v2.23.0](https://github.co
 
 ## Deployment
 
-The Railway `postiz-app` service runs the `feat/sm-tooling-branding` branch of this repository. Push code changes to that branch to deploy. It stays based on the installed v2.23.0 release; upstream main contains newer changes that have not been tested in this installation.
+The Railway `postiz-app` service runs the `main` branch of this repository. Push code changes to that branch to deploy. It stays based on the installed v2.23.0 release; upstream main contains newer changes that have not been tested in this installation.
 
 App: https://postiz-app-production-7abe.up.railway.app/auth/login
 
