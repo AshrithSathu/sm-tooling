@@ -8,9 +8,9 @@ Verified in the actual browser after deployment:
 - Email/password login reaches Calendar.
 - Reload preserves the signed-in session.
 - Logout clears the session; a fresh login succeeds.
-- Found logout landed on the disabled registration page. The final build also redirects `/auth` to Sign In when registration is disabled.
+- Found logout landed on the disabled registration page. Verified the final branded build redirects `/auth` to Sign In when registration is disabled.
 
-Runnable root-cause check: `node --experimental-strip-types upstream/libraries/helpers/src/subdomain/subdomain.management.check.mjs`.
+Runnable root-cause check: `node --experimental-strip-types libraries/helpers/src/subdomain/subdomain.management.check.mjs`.
 
 ## Screen-by-screen results
 
@@ -35,3 +35,7 @@ Runnable root-cause check: `node --experimental-strip-types upstream/libraries/h
 | Password recovery | Form renders; email delivery untested because no email provider is configured |
 
 This is screen and login/media workflow verification, not a claim that every possible feature works. Publishing, channel analytics, automatic posting, provider authorization and AI generation remain blocked by missing external credentials. No social posts or DMs were sent. No team invites or external webhooks were sent.
+
+## GitHub deployment verification
+
+Fork: https://github.com/AshrithSathu/sm-tooling. Railway production builds branch `feat/sm-tooling-branding`; its GitHub push trigger is configured. Commit `76e6e5e` deployed successfully as `688379cf-98a4-4bbb-8a4e-f63ef6fd1dd2`. Frontend, backend and orchestrator builds passed. The live browser shows SM tooling on sign-in, sidebar and Settings; fresh login and logout pass. API login/cookie and media checks pass. The downloadable modified source includes LICENSE and no private environment files.
