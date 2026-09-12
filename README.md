@@ -32,3 +32,9 @@ Requires Node 22.13+ for this small source check. A production Docker build chec
 Original source: https://github.com/gitroomhq/postiz-app
 
 Copyright and AGPL-3.0 terms are retained in `LICENSE`. The SM tooling modifications are documented in `BRANDING.md`.
+
+## Media storage
+
+Production uses the private Railway `sm-media` S3 bucket. Configure `STORAGE_PROVIDER=s3`, `S3_ENDPOINT`, `S3_REGION`, `S3_BUCKET`, `S3_ACCESS_KEY_ID`, and `S3_SECRET_ACCESS_KEY` in Railway. Uploads use the existing validated server upload flow. Stored `/uploads/` links generate fresh one-hour bucket URLs on each request; expiring signatures are never stored in PostgreSQL. Historical object keys preserve existing links. The old upload volume is retained for rollback.
+
+Run `python3 scripts/verify-storage.py /private/path/to/login.json` for upload/download, permanent links, byte ranges and bucket privacy checks. The credentials file must contain `url`, `email`, `password`, and `provider: "LOCAL"`. Never commit credentials.

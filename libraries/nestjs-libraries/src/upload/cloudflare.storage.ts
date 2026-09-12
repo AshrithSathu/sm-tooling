@@ -36,10 +36,11 @@ class CloudflareStorage implements IUploadProvider {
     secretKey: string,
     private region: string,
     private _bucketName: string,
-    private _uploadUrl: string
+    private _uploadUrl: string,
+    private endpoint?: string
   ) {
     this._client = new S3Client({
-      endpoint: `https://${accountID}.r2.cloudflarestorage.com`,
+      endpoint: endpoint || `https://${accountID}.r2.cloudflarestorage.com`,
       region,
       credentials: {
         accessKeyId: accessKey,
@@ -128,7 +129,7 @@ class CloudflareStorage implements IUploadProvider {
       // Create the PutObjectCommand to upload the file to Cloudflare R2
       const command = new PutObjectCommand({
         Bucket: this._bucketName,
-        ACL: 'public-read',
+        ...(this.endpoint ? {} : { ACL: 'public-read' as const }),
         Key: `${id}.${extension}`,
         Body: file.buffer,
         ContentType: safeContentType,
