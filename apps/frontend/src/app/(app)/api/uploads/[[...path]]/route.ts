@@ -1,4 +1,4 @@
-import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
+import { S3Client, GetObjectCommand, HeadObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { NextRequest, NextResponse } from 'next/server';
 import { createReadStream, statSync } from 'fs';
@@ -44,10 +44,10 @@ export const GET = async (
         secretAccessKey: process.env.S3_SECRET_ACCESS_KEY!,
       },
     });
-    const url = await getSignedUrl(client, new GetObjectCommand({
+    const Command = request.method === 'HEAD' ? HeadObjectCommand : GetObjectCommand;
+    const url = await getSignedUrl(client, new Command({
       Bucket: process.env.S3_BUCKET!,
       Key: path.join('/'),
-      ResponseContentDisposition: 'inline',
     }), { expiresIn: 3600 });
     return new NextResponse(null, { status: 307, headers: {
       Location: url,
@@ -79,3 +79,5 @@ export const GET = async (
     },
   });
 };
+
+export const HEAD = GET;

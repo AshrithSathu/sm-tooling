@@ -28,6 +28,8 @@ try:
         assert redirect.code == 307
         assert redirect.headers['Cache-Control'] == 'no-store'
         signed = redirect.headers['Location']
+    with urllib.request.urlopen(urllib.request.Request(media['path'], method='HEAD')) as response:
+        assert int(response.headers['Content-Length']) == len(png)
     with urllib.request.urlopen(signed) as response:
         assert response.read() == png
     with urllib.request.urlopen(urllib.request.Request(signed, headers={'Range': 'bytes=0-7'})) as response:
